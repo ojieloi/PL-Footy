@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from "@angular/router";
+import { NewsService } from "../services/news.service"
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +9,15 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  articles = [];
+
+  constructor(private router: Router, private newsService: NewsService) {}
+
+  ngOnInit() {
+    this.newsService.getArticles().subscribe(res => {
+      this.articles = res.articles;
+      console.log("Articles: ", this.articles);
+    })
+  }
 
 }

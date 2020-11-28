@@ -1,17 +1,37 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar mode="md">
+    <ion-title style="margin-left: 16px;">
+      Footy
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="false">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-list *ngFor="let item of articles | slice:0:1">
+
+    <p class="header ion-margin-start">Top News</p>
+
+    <!-- Top news card -->
+    <ion-card>
+      <img src="{{item.urlToImage}}" />
+      <ion-card-header>
+        <ion-card-subtitle>{{item.source.name}}</ion-card-subtitle>
+        <ion-card-title>{{item.title}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </ion-list>
+
+  <ion-list *ngFor="let item of articles | slice:1:30" lines="none">
+    <ion-item class="ion-no-padding">
+      <ion-thumbnail slot="end">
+        <img src="{{item.urlToImage}}">
+      </ion-thumbnail>
+      <ion-label>
+        <ion-textarea>{{ (item.title.length > 1)? (item.title | slice:0:40)+'...':(item.title) }}</ion-textarea>
+        <p class="source">{{item.source.name}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-content>

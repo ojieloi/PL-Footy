@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// Header
+ion-header {
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
+}
+
+// Header title
+ion-title {
+  color: #0051ff;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+ion-list {
+  background-color: #f0f2f4;
+  padding: 16px;
+}
+
+p.header {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+// Top news
+ion-card {
+  background-color: #f0f2f4;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+ion-card img,
+ion-thumbnail img {
+  border-radius: 4px;
+}
+
+ion-card-header {
+  background-color: #f0f2f4;
+  padding: 4px;
+}
+
+ion-card-subtitle,
+p.source {
+  color: #c4c4c4;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 4px 0px;
+}
+
+ion-card-title,
+ion-textarea {
+  color: #000000;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+// Main list
+ion-item {
+  --background: white;
+  --padding-start: 16px;
+  --padding-end: 8px;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+  border-radius: 4px;
+}
+
+ion-textarea {
+  max-width: 98%;
+  max-height: 50px;
+  overflow-y: visible;
+}
+
+p.source {
+  margin-top: auto;
+  position: relative;
+}
