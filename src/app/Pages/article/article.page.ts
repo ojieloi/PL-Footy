@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NewsService } from "../../services/news.service"
 
 @Component({
   selector: 'app-article',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticlePage implements OnInit {
 
-  constructor() { }
+  article= [];
+
+  constructor(private newsService: NewsService) { }
 
   ngOnInit() {
+
+    // Getting article
+    // this.newsService.getArticle().map(key => {
+    //   this.article = key;
+    //   console.log("Article: ", this.article);
+    // })
+
+    // Getting article
+    let item = this.newsService.getArticle();
+    let selected = {};
+    for (let obj of item) {
+      selected[obj] = { ...obj, count: 1 };
+    }
+    this.article = Object.keys(selected).map((key) => selected[key]);
+    console.log(this.article);
   }
 
 }

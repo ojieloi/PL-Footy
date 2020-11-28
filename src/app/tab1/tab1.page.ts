@@ -20,4 +20,10 @@ export class Tab1Page {
     })
   }
 
+  openArticle(item) {
+    this.router.navigate(['article']);
+    this.newsService.addArticle(item);
+    console.log(item);
+  }
+
 }

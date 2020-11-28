@@ -1,9 +1,27 @@
 <ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar mode="md">
-    <ion-button fill="clear" (click)="goBack()"><ion-icon color="dark" name="arrow-back-outline"></ion-icon></ion-button>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  
+  <div class="container" *ngFor="let item of article">
+
+    <!-- Featured image -->
+    <div class="image">
+      <img src="{{item.urlToImage}}" alt="featured_image">
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <h2>{{item.title}}</h2>
+      <p class="source">{{item.source.name}}</p>
+
+      <p class="cont">{{item.content}}</p>
+    </div>
+  </div>
 
 </ion-content>
