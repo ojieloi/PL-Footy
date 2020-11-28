@@ -41,7 +41,7 @@ export class TeamsService {
     return this.team;
   }
 
-  addArticle(item) {
+  addTeam(item) {
     this.team.push(item);
   }
 

@@ -13,13 +13,6 @@ export class ArticlePage implements OnInit {
   constructor(private newsService: NewsService) { }
 
   ngOnInit() {
-
-    // Getting article
-    // this.newsService.getArticle().map(key => {
-    //   this.article = key;
-    //   console.log("Article: ", this.article);
-    // })
-
     // Getting article
     let item = this.newsService.getArticle();
     let selected = {};

@@ -1,17 +1,38 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar mode="md">
+    <ion-title style="margin-left: 16px;">
+      Footy
     </ion-title>
   </ion-toolbar>
+
+  <!-- Segment -->
+  <ion-segment mode="md" color="primary" (ionChange)="segmentChanged($event)" value="teams" [(ngModel)]="option">
+    <ion-segment-button value="table">
+      <ion-label>Table</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="teams">
+      <ion-label>Teams</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="false">
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+   <!-- Table -->
+
+   <!-- All teams -->
+   <div class="container" [ngSwitch]="option">
+
+    <!-- All Teams -->
+    <ion-list *ngSwitchCase="'teams'" lines="none">
+      <ion-item class="team ion-no-padding" (click)="openTeam(item)" *ngFor="let item of allTeams">
+        <ion-thumbnail slot="start" style="height: 30px; width: 30px;">
+          <img src="{{item.strTeamBadge}}">
+        </ion-thumbnail>
+        <ion-label>
+          <p class="name">{{item.strTeam}}</p>
+        </ion-label>
+      </ion-item>
+     </ion-list>
+   </div>
 </ion-content>
