@@ -24,7 +24,7 @@ export class TeamsService {
   }
   
   getPreviousGames(id) {
-    const url = 'https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=' + id;
+    const url = 'https://www.thesportsdb.com/api/v1/json/1/eventslast.php?id=' + id;
     return this.http.get(url).pipe(map((res: any) => {
       return res;
     }))

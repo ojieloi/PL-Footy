@@ -12,7 +12,12 @@ export class TeamPage implements OnInit {
   last = [];
   next = [];
 
-  constructor(private teamService: TeamsService) { }
+  constructor(private teamService: TeamsService) {
+    this.teamService.getAllTeams().subscribe(res => {
+      this.team = res.teams;
+      console.log("Teams: ", this.team);
+    })
+  }
 
   ngOnInit() {
     // Getting team
@@ -33,16 +38,27 @@ export class TeamPage implements OnInit {
   }
 
   getLastMatches(id) {
-    let val;
-    this.teamService.getTeam().map(key => {
-      this.last = key;
-      console.log("Previous games: ", this.last);
+    let teamID;
+    let func = Object.values(id).map(res => {
+      teamID = res;
+
+      this.teamService.getPreviousGames(teamID.idTeam).subscribe(res => {
+        this.last = res.results;
+        console.log("Previous: ", this.last);
+      })
     })
   }
 
   getUpcomingMatches(id = []) {
-    let teamID = id.map(key => {id: key.idTeam})
-    console.log(teamID);
+    let teamID;
+    let func = Object.values(id).map(res => {
+      teamID = res;
+
+      this.teamService.getUpcomingGames(teamID.idTeam).subscribe(res => {
+        this.next = res.events;
+        console.log("Upcoming: ", this.next);
+      })
+    })
   }
 
 }
