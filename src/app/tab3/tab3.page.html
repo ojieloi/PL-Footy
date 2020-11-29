@@ -23,13 +23,65 @@
 
     <!-- Table -->
     <ion-list *ngSwitchCase="'1'" lines="none">
-      <ion-item class="team ion-no-padding" (click)="openTeam(item)" *ngFor="let item of allTeams">
-        <ion-thumbnail slot="start" style="height: 30px; width: 30px;">
-          <img src="{{item.strTeamBadge}}">
-        </ion-thumbnail>
+      <ion-note slot="end">
+        <p class="data" style="margin-right: 8px; text-align: right;">P - Goals - Pts.</p>
+      </ion-note>
+
+      <p class="cl" style="margin: 24px 0px 10px;">Champions League</p>
+      <ion-item class="team ion-no-padding" (click)="openTeam(item)" *ngFor="let item of table | slice:0:4; index as i">
+
+        <!-- Position -->
+        <ion-note slot="start">
+          <p class="position">{{i}}</p>
+        </ion-note>
+
+        <!-- Team -->
         <ion-label>
-          <p class="name">{{item.strTeam}}</p>
+          <p class="name" style="margin-left: 16px; text-align: left;">{{item.name}}</p>
         </ion-label>
+
+        <!-- Points -->
+        <ion-note slot="end">
+          <p class="data">{{item.played}} - {{item.goalsfor}}:{{item.goalsagainst}} - {{item.total}}</p>
+        </ion-note>
+      </ion-item>
+
+      <p class="cl" style="margin: 24px 0px 10px;">Europa League</p>
+      <ion-item class="team ion-no-padding" (click)="openTeam(item)" *ngFor="let item of table | slice:4:5; index as i">
+
+        <!-- Position -->
+        <ion-note slot="start">
+          <p class="position">{{i + 5}}</p>
+        </ion-note>
+
+        <!-- Team -->
+        <ion-label>
+          <p class="name" style="margin-left: 16px; text-align: left;">{{item.name}}</p>
+        </ion-label>
+
+        <!-- Points -->
+        <ion-note slot="end">
+          <p class="data">{{item.played}} - {{item.goalsfor}}:{{item.goalsagainst}} - {{item.total}}</p>
+        </ion-note>
+      </ion-item>
+
+      <!-- Rest -->
+      <ion-item class="team ion-no-padding" (click)="openTeam(item)" *ngFor="let item of table | slice:5:20; index as i">
+
+        <!-- Position -->
+        <ion-note slot="start">
+          <p class="position">{{i + 6}}</p>
+        </ion-note>
+
+        <!-- Team -->
+        <ion-label>
+          <p class="name" style="margin-left: 16px; text-align: left;">{{item.name}}</p>
+        </ion-label>
+
+        <!-- Points -->
+        <ion-note slot="end">
+          <p class="data">{{item.played}} - {{item.goalsfor}}:{{item.goalsagainst}} - {{item.total}}</p>
+        </ion-note>
       </ion-item>
     </ion-list>
 

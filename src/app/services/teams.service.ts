@@ -15,7 +15,7 @@ export class TeamsService {
 
   constructor(private http: HttpClient) { }
 
-  // Service that fetches all Premier League teams
+  // Gets all Premier League teams
   getAllTeams() {
     const url = 'https://www.thesportsdb.com/api/v1/json/1/search_all_teams.php?l=English%20Premier%20League';
     return this.http.get(url).pipe(map((res: any) => {
@@ -23,6 +23,7 @@ export class TeamsService {
     }))
   }
   
+  // Gets previous 5 games
   getPreviousGames(id) {
     const url = 'https://www.thesportsdb.com/api/v1/json/1/eventslast.php?id=' + id;
     return this.http.get(url).pipe(map((res: any) => {
@@ -30,6 +31,7 @@ export class TeamsService {
     }))
   }
 
+  // Gets next 5 games
   getUpcomingGames(id) {
     const url = 'https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=' + id;
     return this.http.get(url).pipe(map((res: any) => {
