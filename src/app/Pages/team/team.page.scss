@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 // Header
 ion-header {
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.02);
@@ -8,4 +13,124 @@ ion-title {
   color: #0051ff;
   font-size: 20px;
   font-weight: bold;
+}
+
+// Team badge and name
+.header {
+  text-align: center;
+  margin: 24px 0px 0px;
+}
+
+// Badge
+.header img {
+  height: 50px;
+  width: 50px;
+}
+
+// Name
+.header h2.name {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 4px 0px 16px;
+}
+
+// Segment
+ion-segment-button ion-label {
+  color: black;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: none;
+}
+
+ion-list {
+  padding: 0px 16px 16px;
+}
+
+// Ion card
+ion-card {
+  background-color: white;
+  border-radius: 7px;
+  box-shadow: none;
+  cursor: pointer;
+  margin-top: 24px;
+}
+
+ion-card img {
+  border-radius: 7px;
+}
+
+ion-card-header {
+  background-color: white;
+  padding: 4px;
+}
+
+// Article source
+ion-card-subtitle {
+  color: #c4c4c4;
+  font-size: 10px;
+  font-weight: 600;
+  margin: 4px 0px;
+}
+
+// Article title
+ion-card-title {
+  color: #000000;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+// Matches
+p.header {
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+  margin: 32px 0px 16px;
+}
+
+ion-item {
+  --background: white;
+  --padding-start: 16px;
+  --padding-end: 8px;
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+  border: 5px solid #f0f2f4;
+  border-radius: 7px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+// Team name
+h2#name {
+  color: black;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+}
+
+h2#name:nth-last-of-type(1),
+p#score:nth-last-of-type(1) {
+  margin-top: 8px;
+}
+
+// Match score
+p#score {
+  color: #c4c4c4;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: right;
+}
+
+// Match date
+p#status,
+ion-datetime {
+  color: #0051ff;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+}
+
+ion-datetime {
+  color: #a200ff;
+  font-size: 11px;
 }

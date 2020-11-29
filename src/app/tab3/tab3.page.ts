@@ -14,7 +14,7 @@ export class Tab3Page {
   constructor(private router: Router, private teamService: TeamsService) {}
 
   segmentChanged(ev: any) {
-    console.log('Segment changed', ev);
+    console.log('Segment changed');
   }
 
   ngOnInit() {

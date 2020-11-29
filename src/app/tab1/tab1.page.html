@@ -28,7 +28,7 @@
         <img src="{{item.urlToImage}}">
       </ion-thumbnail>
       <ion-label>
-        <ion-textarea>{{ (item.title.length > 1)? (item.title | slice:0:40)+'...':(item.title) }}</ion-textarea>
+        <ion-textarea>{{ (item.title.length > 1)? (item.title | slice:0:50)+'...':(item.title) }}</ion-textarea>
         <p class="source">{{item.source.name}}</p>
       </ion-label>
     </ion-item>
