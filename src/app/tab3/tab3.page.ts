@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from "@angular/router";
-import { TeamsService } from "../services/teams.service"
+import { TeamsService } from "../services/teams.service";
 
 @Component({
   selector: 'app-tab3',
@@ -10,11 +10,12 @@ import { TeamsService } from "../services/teams.service"
 export class Tab3Page {
 
   allTeams = [];
+  option = 1;
 
   constructor(private router: Router, private teamService: TeamsService) {}
 
-  segmentChanged(ev: any) {
-    console.log('Segment changed');
+  async segmentChanged(ev: any) {  
+    // 
   }
 
   ngOnInit() {

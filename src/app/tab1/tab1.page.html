@@ -8,22 +8,21 @@
 
 <ion-content [fullscreen]="false">
 
-  <ion-list *ngFor="let item of articles | slice:0:1">
+  <ion-list lines="none">
 
     <p class="header ion-margin-start">Top News 🔥</p>
 
     <!-- Top news card -->
-    <ion-card (click)="openArticle(item)">
+    <ion-card *ngFor="let item of articles | slice:0:1" (click)="openArticle(item)">
       <img src="{{item.urlToImage}}" />
       <ion-card-header>
         <ion-card-subtitle>{{item.source.name}}</ion-card-subtitle>
         <ion-card-title>{{item.title}}</ion-card-title>
       </ion-card-header>
     </ion-card>
-  </ion-list>
 
-  <ion-list *ngFor="let item of articles | slice:1:30" lines="none">
-    <ion-item class="ion-no-padding" (click)="openArticle(item)">
+    <!-- Main news articles -->
+    <ion-item class="ion-no-padding" *ngFor="let item of articles | slice:1:20" (click)="openArticle(item)">
       <ion-thumbnail slot="end">
         <img src="{{item.urlToImage}}">
       </ion-thumbnail>
@@ -33,5 +32,17 @@
       </ion-label>
     </ion-item>
   </ion-list>
+
+  <!-- <ion-list *ngFor="let item of articles | slice:1:30" lines="none">
+    <ion-item class="ion-no-padding" *ngFor="let item of articles | slice:1:30" (click)="openArticle(item)">
+      <ion-thumbnail slot="end">
+        <img src="{{item.urlToImage}}">
+      </ion-thumbnail>
+      <ion-label>
+        <ion-textarea>{{ (item.title.length > 1)? (item.title | slice:0:50)+'...':(item.title) }}</ion-textarea>
+        <p class="source">{{item.source.name}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list> -->
 
 </ion-content>

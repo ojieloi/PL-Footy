@@ -15,6 +15,8 @@ export class TeamPage implements OnInit {
   last = [];
   next = [];
 
+  option = 2;
+
   constructor(private router: Router, private teamService: TeamsService, private newsService: NewsService) {
     // this.teamService.getAllTeams().subscribe(res => {
     //   this.team = res.teams;
@@ -63,10 +65,10 @@ export class TeamPage implements OnInit {
   }
 
   // Get Team-Related News
-  getArticles(team) {
+  async getArticles(team) {
     let teamName;
     let article = [];
-    let func = Object.values(team).map(res => {
+    let func = await Object.values(team).map(res => {
       teamName = res;
 
       this.newsService.getTeamArticles(teamName.strTeam).subscribe(res => {
@@ -77,9 +79,9 @@ export class TeamPage implements OnInit {
   }
 
   // Get Previous Games
-  getLastMatches(id) {
+  async getLastMatches(id) {
     let teamID;
-    let func = Object.values(id).map(res => {
+    let func = await Object.values(id).map(res => {
       teamID = res;
 
       this.teamService.getPreviousGames(teamID.idTeam).subscribe(res => {
@@ -90,9 +92,9 @@ export class TeamPage implements OnInit {
   }
 
   // Get Upcoming Games
-  getUpcomingMatches(id = []) {
+  async getUpcomingMatches(id = []) {
     let teamID;
-    let func = Object.values(id).map(res => {
+    let func = await Object.values(id).map(res => {
       teamID = res;
 
       this.teamService.getUpcomingGames(teamID.idTeam).subscribe(res => {

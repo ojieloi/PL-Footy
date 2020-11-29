@@ -13,11 +13,11 @@
     <h2 class="name">{{item.strTeam}}</h2>
 
     <!-- Segment -->
-    <ion-segment mode="md" color="primary" (ionChange)="segmentChanged($event)" scrollable value="news" [(ngModel)]="option">
-      <ion-segment-button value="news">
+    <ion-segment mode="md" color="primary" (ionChange)="segmentChanged($event)" value="news" [(ngModel)]="option">
+      <ion-segment-button value="1">
         <ion-label>News</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="games">
+      <ion-segment-button value="2">
         <ion-label>Matches</ion-label>
       </ion-segment-button>
     </ion-segment>
@@ -27,7 +27,7 @@
   <div class="container" [ngSwitch]="option">
 
     <!-- News -->
-    <ion-list *ngSwitchCase="'news'" lines="none">
+    <ion-list *ngSwitchCase="'1'" lines="none">
       <ion-card *ngFor="let item of articles" (click)="openArticle(item)">
         <img src="{{item.urlToImage}}" />
         <ion-card-header>
@@ -38,12 +38,10 @@
      </ion-list>
 
     <!-- Games -->
-    <ion-list *ngSwitchCase="'games'" lines="none">
-
-      <!-- Previos -->
-      <!-- Previos -->
+    <ion-list *ngSwitchCase="'2'" lines="none">
+      <!-- Previous -->
+      <!-- Previous -->
       <p class="header">Previous Games</p>
-
       <ion-item class="team ion-no-padding" (click)="openTeam(item)" *ngFor="let item of last">
         <!-- Team -->
         <ion-label slot="start">
@@ -67,7 +65,6 @@
       <!-- Upcoming -->
       <!-- Upcoming -->
       <p class="header">Upcoming Games</p>
-
       <ion-item class="team ion-no-padding" (click)="openTeam(item)" *ngFor="let item of next">
         <!-- Team -->
         <ion-label slot="start">
