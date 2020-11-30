@@ -5,7 +5,8 @@
     </ion-title>
   </ion-toolbar>
 
-  <!-- Segment -->
+  <!-- Segment - Table / Teams -->
+  <!-- Segment - Table / Teams -->
   <ion-segment mode="md" color="primary" (ionChange)="segmentChanged($event)" [(ngModel)]="option">
     <ion-segment-button value="1">
       <ion-label>Table</ion-label>
@@ -14,87 +15,167 @@
       <ion-label>Teams</ion-label>
     </ion-segment-button>
   </ion-segment>
+  <!-- Segment - Table / Teams -->
+  <!-- Segment - Table / Teams -->
+
 </ion-header>
 
 <ion-content [fullscreen]="false">
 
-  <!-- Table and All Teams -->
+  <!-- Table and All Teams Container-->
   <div class="container" [ngSwitch]="option">
 
+    <!-- Crescent Spinner -->
+    <!-- Crescent Spinner -->
+    <div class="spinner">
+      <ion-spinner name="crescent" duration="1000" *ngIf="show"></ion-spinner>
+    </div>
+    <!-- Crescent Spinner -->
+    <!-- Crescent Spinner -->
+
+
+    <!-- Header -->
+    <!-- Header -->
+    <div class="header" *ngFor="let item of league | slice:0:1">
+      <img *ngIf="!show" src="{{item.strBadge}}" alt="badge">
+      <h2 *ngIf="!show" class="name">{{item.strLeague}}</h2>
+    </div>
+    <!-- Header -->
+    <!-- Header -->
+
+
+    <!-- Table -->
     <!-- Table -->
     <ion-list *ngSwitchCase="'1'" lines="none">
-      <ion-note slot="end">
-        <p class="data" style="margin-right: 8px; text-align: right;">P - Goals - Pts.</p>
-      </ion-note>
 
-      <p class="cl" style="margin: 24px 0px 10px;">Champions League</p>
-      <ion-item class="team ion-no-padding" (click)="openTeam(item)" *ngFor="let item of table | slice:0:4; index as i">
-
-        <!-- Position -->
-        <ion-note slot="start">
-          <p class="position">{{i}}</p>
-        </ion-note>
-
-        <!-- Team -->
-        <ion-label>
-          <p class="name" style="margin-left: 16px; text-align: left;">{{item.name}}</p>
-        </ion-label>
-
-        <!-- Points -->
+      <div *ngIf="!show">
+        <!-- Played, Goals, Points -->
+        <!-- Played, Goals, Points -->
         <ion-note slot="end">
-          <p class="data">{{item.played}} - {{item.goalsfor}}:{{item.goalsagainst}} - {{item.total}}</p>
+          <p class="data" style="margin-right: 8px; text-align: right;">P - Goals - Pts.</p>
         </ion-note>
-      </ion-item>
+        <!-- Played, Goals, Points -->
+        <!-- Played, Goals, Points -->
 
-      <p class="cl" style="margin: 24px 0px 10px;">Europa League</p>
-      <ion-item class="team ion-no-padding" (click)="openTeam(item)" *ngFor="let item of table | slice:4:5; index as i">
+  
+        <!-- 1st - 4th, Top 4 -->
+        <!-- 1st - 4th, Top 4 -->
+        <p class="cl">Champions League</p>
+        <ion-item class="team ion-no-padding" *ngFor="let item of table | slice:0:4; index as i">
+  
+          <!-- Position -->
+          <ion-note slot="start">
+            <p class="position">{{i + 1}}</p>
+          </ion-note>
+  
+          <!-- Team Name -->
+          <ion-label>
+            <p class="name" style="margin-left: 16px; text-align: left;">{{item.name}}</p>
+          </ion-label>
+  
+          <!-- Played - Goals For:Goals Against, Points -->
+          <ion-note slot="end">
+            <p class="data">{{item.played}} - {{item.goalsfor}}:{{item.goalsagainst}} - {{item.total}}</p>
+          </ion-note>
+        </ion-item>
+        <!-- 1st - 4th, Top 4 -->
+        <!-- 1st - 4th, Top 4 -->
+  
 
-        <!-- Position -->
-        <ion-note slot="start">
-          <p class="position">{{i + 5}}</p>
-        </ion-note>
+        <!-- 5th - Europa League -->
+        <!-- 5th - Europa League -->
+        <p class="cl">Europa League</p>
+        <ion-item class="team ion-no-padding" *ngFor="let item of table | slice:4:5; index as i">
+  
+          <!-- Position -->
+          <ion-note slot="start">
+            <p class="position">{{i + 5}}</p>
+          </ion-note>
+  
+          <!-- Team Name -->
+          <ion-label>
+            <p class="name" style="margin-left: 16px; text-align: left;">{{item.name}}</p>
+          </ion-label>
+  
+          <!-- Played - Goals For:Goals Against, Points -->
+          <ion-note slot="end">
+            <p class="data">{{item.played}} - {{item.goalsfor}}:{{item.goalsagainst}} - {{item.total}}</p>
+          </ion-note>
+        </ion-item>
+        <!-- 5th - Europa League -->
+        <!-- 5th - Europa League -->
 
-        <!-- Team -->
-        <ion-label>
-          <p class="name" style="margin-left: 16px; text-align: left;">{{item.name}}</p>
-        </ion-label>
+  
+        <!-- From 6th to 16th -->
+        <!-- From 6th to 16th -->
+        <ion-item class="team ion-no-padding" *ngFor="let item of table | slice:5:17; index as i">
+  
+          <!-- Position -->
+          <ion-note slot="start">
+            <p class="position">{{i + 6}}</p>
+          </ion-note>
+  
+          <!-- Team Name -->
+          <ion-label>
+            <p class="name" style="margin-left: 16px; text-align: left;">{{item.name}}</p>
+          </ion-label>
+  
+          <!-- Played - Goals For:Goals Against, Points -->
+          <ion-note slot="end">
+            <p class="data">{{item.played}} - {{item.goalsfor}}:{{item.goalsagainst}} - {{item.total}}</p>
+          </ion-note>
+        </ion-item>
+        <!-- From 6th to 16th -->
+        <!-- From 6th to 16th -->
 
-        <!-- Points -->
-        <ion-note slot="end">
-          <p class="data">{{item.played}} - {{item.goalsfor}}:{{item.goalsagainst}} - {{item.total}}</p>
-        </ion-note>
-      </ion-item>
 
-      <!-- Rest -->
-      <ion-item class="team ion-no-padding" (click)="openTeam(item)" *ngFor="let item of table | slice:5:20; index as i">
-
-        <!-- Position -->
-        <ion-note slot="start">
-          <p class="position">{{i + 6}}</p>
-        </ion-note>
-
-        <!-- Team -->
-        <ion-label>
-          <p class="name" style="margin-left: 16px; text-align: left;">{{item.name}}</p>
-        </ion-label>
-
-        <!-- Points -->
-        <ion-note slot="end">
-          <p class="data">{{item.played}} - {{item.goalsfor}}:{{item.goalsagainst}} - {{item.total}}</p>
-        </ion-note>
-      </ion-item>
+        <!-- Relagation Zone -->
+        <!-- Relagation Zone -->
+        <p class="cl">Relegation Zone</p>
+        <ion-item class="team ion-no-padding" *ngFor="let item of table | slice:17:20; index as i">
+  
+          <!-- Position -->
+          <ion-note slot="start">
+            <p class="position">{{i + 18}}</p>
+          </ion-note>
+  
+          <!-- Team Name -->
+          <ion-label>
+            <p class="name" style="margin-left: 16px; text-align: left;">{{item.name}}</p>
+          </ion-label>
+  
+          <!-- Played - Goals For:Goals Against, Points -->
+          <ion-note slot="end">
+            <p class="data">{{item.played}} - {{item.goalsfor}}:{{item.goalsagainst}} - {{item.total}}</p>
+          </ion-note>
+        </ion-item>
+        <!-- Relagation Zone -->
+        <!-- Relagation Zone -->
+      </div>
     </ion-list>
+    <!-- Table -->
+    <!-- Table -->
+
 
     <!-- All Teams -->
+    <!-- All Teams -->
     <ion-list *ngSwitchCase="'2'" lines="none">
-      <ion-item class="team ion-no-padding" (click)="openTeam(item)" *ngFor="let item of allTeams">
+      <ion-item class="ion-no-padding" (click)="openTeam(item)" *ngFor="let item of allTeams">
+
+        <!-- Team Badge -->
         <ion-thumbnail slot="start" style="height: 30px; width: 30px;">
           <img src="{{item.strTeamBadge}}">
         </ion-thumbnail>
+
+        <!-- Team Name -->
         <ion-label>
           <p class="name">{{item.strTeam}}</p>
         </ion-label>
+
       </ion-item>
     </ion-list>
+    <!-- All Teams -->
+    <!-- All Teams -->
+
   </div>
 </ion-content>

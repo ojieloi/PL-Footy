@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// Header
+ion-header {
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.02);
+}
+
+// Header title
+ion-title {
+  color: #0051ff;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.container {
+  // padding: 16px;
+}
+
+.score {
+  background-color: #212121;
+  padding: 24px 16px;
+}
+
+// Matches
+p.header {
+  color: rgb(30, 143, 255);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+ion-item {
+  --background: #212121;
+  --padding-start: 0px;
+  --padding-end: 0px;
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  border: 3px solid #212121;
+  border-radius: 7px;
+  margin-top: 0px;
+  min-width: 100%;
+}
+
+ion-item.team-score {
+  margin-bottom: 16px;
+}
+
+ion-item.team-score:last-of-type {
+  margin-bottom: 0px;
+}
+
+// Team name
+h2#name,
+ion-textarea.name {
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+}
+h2#name:nth-of-type(2) {
+  margin-top: 8px;
+}
+
+// Match score
+p#score {
+  color: #c4c4c4;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+}
+p#score:nth-of-type(2) {
+  margin-top: 8px;
+}
+
+// Ion slide
+ion-slides {
+  height: 100%;
+  margin-top: 24px;
+}
+
+ion-slide {
+  background-color: rgb(153, 224, 224);
+}

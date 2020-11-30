@@ -12,7 +12,8 @@
     <img src="{{item.strTeamBadge}}" alt="badge">
     <h2 class="name">{{item.strTeam}}</h2>
 
-    <!-- Segment -->
+    <!-- Segment - News / Matches -->
+    <!-- Segment - News / Matches -->
     <ion-segment mode="md" color="primary" (ionChange)="segmentChanged($event)" value="news" [(ngModel)]="option">
       <ion-segment-button value="1">
         <ion-label>News</ion-label>
@@ -21,70 +22,107 @@
         <ion-label>Matches</ion-label>
       </ion-segment-button>
     </ion-segment>
+    <!-- Segment - News / Matches -->
+    <!-- Segment - News / Matches -->
   </div>
 
   <!-- Team News and Games -->
   <div class="container" [ngSwitch]="option">
 
+    <!-- Crescent Spinner -->
+    <!-- Crescent Spinner -->
+    <div class="spinner">
+      <ion-spinner name="crescent" duration="1000" *ngIf="show"></ion-spinner>
+    </div>
+    <!-- Crescent Spinner -->
+    <!-- Crescent Spinner -->
+
+
     <!-- News -->
-    <ion-list *ngSwitchCase="'1'" lines="none">
-      <ion-card *ngFor="let item of articles" (click)="openArticle(item)">
-        <img src="{{item.urlToImage}}" />
-        <ion-card-header>
-          <ion-card-subtitle>{{item.source.name}}</ion-card-subtitle>
-          <ion-card-title>{{item.title}}</ion-card-title>
-        </ion-card-header>
-      </ion-card>
-     </ion-list>
+    <!-- News -->
+    <div *ngIf="!show">
+      <ion-list *ngSwitchCase="'1'" lines="none">
+        <ion-card *ngFor="let item of articles" (click)="openArticle(item)">
+
+          <!-- Article Thumbnail -->
+          <img src="{{item.urlToImage}}" />
+
+          <ion-card-header>
+
+            <!-- Article Source -->
+            <ion-card-subtitle>{{item.source.name}}</ion-card-subtitle>
+
+            <!-- Article Title -->
+            <ion-card-title>{{item.title}}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-list>
+    </div>
+    <!-- News -->
+    <!-- News -->
+
 
     <!-- Games -->
-    <ion-list *ngSwitchCase="'2'" lines="none">
-      <!-- Previous -->
-      <!-- Previous -->
-      <p class="header">Previous Games</p>
-      <ion-item class="team ion-no-padding" (click)="openTeam(item)" *ngFor="let item of last">
-        <!-- Team -->
-        <ion-label slot="start">
-          <h2 id="name">{{item.strHomeTeam}}</h2>
-          <h2 id="name">{{item.strAwayTeam}}</h2>
-        </ion-label>
+    <!-- Games -->
+    <div *ngIf="!show">
+      <ion-list *ngSwitchCase="'2'" lines="none">
 
-        <!-- Score -->
-        <ion-note>
-          <p id="score">{{item.intHomeScore}}</p>
-          <p id="score">{{item.intAwayScore}}</p>
-        </ion-note>
+        <!-- Previous -->
+        <!-- Previous -->
+        <p class="header">Previous Games</p>
+        <ion-item class="team ion-no-padding" (click)="openTeam(item)" *ngFor="let item of last">
+          <!-- Team -->
+          <ion-label slot="start">
+            <h2 id="name">{{item.strHomeTeam}}</h2>
+            <h2 id="name">{{item.strAwayTeam}}</h2>
+          </ion-label>
+  
+          <!-- Score -->
+          <ion-note>
+            <p id="score">{{item.intHomeScore}}</p>
+            <p id="score">{{item.intAwayScore}}</p>
+          </ion-note>
+  
+          <!-- Date -->
+          <ion-note slot="end">
+            <p id="status">{{item.strStatus}}</p>
+          </ion-note>
+        </ion-item>
+        <!-- Previous -->
+        <!-- Previous -->
+  
+  
+        <!-- Upcoming -->
+        <!-- Upcoming -->
+        <p class="header">Upcoming Games</p>
+        <ion-item class="team ion-no-padding" (click)="openTeam(item)" *ngFor="let item of next">
+          <!-- Team -->
+          <ion-label slot="start">
+            <h2 id="name">{{item.strHomeTeam}}</h2>
+            <h2 id="name">{{item.strAwayTeam}}</h2>
+          </ion-label>
+  
+          <!-- Score -->
+          <ion-note>
+            <p id="score">{{item.intHomeScore}}</p>
+            <p id="score">{{item.intHomeScore}}</p>
+          </ion-note>
+  
+          <!-- Date -->
+          <ion-note slot="end">
+            <p id="status">{{item.strStatus}}</p>
+            <ion-datetime id="dynamicDisabled" displayFormat="MMM DD" disabled value="{{item.dateEvent}}"></ion-datetime>
+          </ion-note>
+        </ion-item>
+        <!-- Upcoming -->
+        <!-- Upcoming -->
 
-        <!-- Date -->
-        <ion-note slot="end">
-          <p id="status">{{item.strStatus}}</p>
-        </ion-note>
-      </ion-item>
+
+       </ion-list>
+    </div>
+    <!-- Games -->
+    <!-- Games -->
 
 
-      <!-- Upcoming -->
-      <!-- Upcoming -->
-      <p class="header">Upcoming Games</p>
-      <ion-item class="team ion-no-padding" (click)="openTeam(item)" *ngFor="let item of next">
-        <!-- Team -->
-        <ion-label slot="start">
-          <h2 id="name">{{item.strHomeTeam}}</h2>
-          <h2 id="name">{{item.strAwayTeam}}</h2>
-        </ion-label>
-
-        <!-- Score -->
-        <ion-note>
-          <p id="score">{{item.intHomeScore}}</p>
-          <p id="score">{{item.intHomeScore}}</p>
-        </ion-note>
-
-        <!-- Date -->
-        <ion-note slot="end">
-          <p id="status">{{item.strStatus}}</p>
-          <ion-datetime id="dynamicDisabled" displayFormat="MMM DD" disabled value="{{item.dateEvent}}"></ion-datetime>
-        </ion-note>
-      </ion-item>
-     </ion-list>
-   </div>
-
+  </div>
 </ion-content>

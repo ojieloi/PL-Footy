@@ -1,0 +1,90 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="container">
+
+    <!-- Score Header -->
+    <!-- Score Header -->
+    <div class="score" *ngFor="let item of event">
+      <p class="header">Score</p>
+        <ion-item class="team-score ion-no-padding" lines="none">
+          <!-- Team -->
+          <ion-label slot="start">
+            <h2 id="name">{{item.strHomeTeam}}</h2>
+            <h2 id="name">{{item.strAwayTeam}}</h2>
+          </ion-label>
+  
+          <!-- Score -->
+          <ion-note slot="end">
+            <p id="score">{{item.intHomeScore}}</p>
+            <p id="score">{{item.intAwayScore}}</p>
+          </ion-note>
+        </ion-item>
+
+
+        <p class="header">Total Shots</p>
+        <ion-item class="team-score ion-no-padding" lines="none">
+          <!-- Team -->
+          <ion-label slot="start">
+            <h2 id="name">{{item.strHomeTeam}}</h2>
+            <h2 id="name">{{item.strAwayTeam}}</h2>
+          </ion-label>
+  
+          <!-- Score -->
+          <ion-note slot="end">
+            <p id="score">{{item.intHomeShots}}</p>
+            <p id="score">{{item.intAwayShots}}</p>
+          </ion-note>
+        </ion-item>
+    </div>
+    <!-- Score Header -->
+    <!-- Score Header -->
+
+
+    <!-- Segment - News / Matches -->
+    <!-- Segment - News / Matches -->
+    <ion-segment mode="md" color="primary" (ionChange)="segmentChanged($event)" value="news" [(ngModel)]="option">
+      <ion-segment-button value="1">
+        <ion-label>Goals</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        <ion-label>Lineups</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <!-- Segment - News / Matches -->
+    <!-- Segment - News / Matches -->
+
+
+    <div [ngSwitch]="option">
+
+      <!-- Goal Details -->
+      <!-- Goal Details -->
+      <ion-list *ngSwitchCase="'1'" lines="none">
+        <p class="header">Previous Games</p>
+          <ion-item class="team ion-no-padding" *ngFor="let goal of event">
+            <!-- Player -->
+            <ion-label>
+              <ion-textarea class="name">{{ goal.strHomeGoalDetails.split(";", goal.strHomeGoalDetails.length) }}</ion-textarea>
+            </ion-label>
+    
+            <!-- Minute -->
+            <ion-note slot="end">
+              <p id="status">{{goal.strStatus}}</p>
+            </ion-note>
+          </ion-item>
+      </ion-list>
+      <!-- Goal Details -->
+      <!-- Goal Details -->
+
+    </div>
+
+  </div>
+
+</ion-content>

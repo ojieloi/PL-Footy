@@ -16,4 +16,12 @@ export class TableService {
       return res;
     }))
   }
+
+  // Get league details
+  getLeague() {
+    const url = 'https://www.thesportsdb.com/api/v1/json/1/lookupleague.php?id=4328';
+    return this.http.get(url).pipe(map((res: any) => {
+      return res;
+    }))
+  }
 }

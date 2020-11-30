@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'article',
     loadChildren: () => import('./Pages/article/article.module').then( m => m.ArticlePageModule)
+  },
+  {
+    path: 'match-detail',
+    loadChildren: () => import('./Pages/match-detail/match-detail.module').then( m => m.MatchDetailPageModule)
   }
 ];
 @NgModule({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import { TeamsService } from "../../services/teams.service"
-import { NewsService } from "../../services/news.service"
+import { TeamsService } from "../../services/teams.service";
+import { NewsService } from "../../services/news.service";
 
 @Component({
   selector: 'app-team',
@@ -9,6 +9,8 @@ import { NewsService } from "../../services/news.service"
   styleUrls: ['./team.page.scss'],
 })
 export class TeamPage implements OnInit {
+
+  show = true;
 
   team = [];
   articles = []
@@ -64,10 +66,15 @@ export class TeamPage implements OnInit {
     console.log(this.team);
   }
 
+  ionViewWillEnter() {
+    setTimeout(() => {
+      this.show = false;
+    }, 2000);
+  }
+
   // Get Team-Related News
   async getArticles(team) {
     let teamName;
-    let article = [];
     let func = await Object.values(team).map(res => {
       teamName = res;
 
