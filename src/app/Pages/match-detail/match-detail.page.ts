@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import { threadId } from 'worker_threads';
+// import { threadId } from 'worker_threads';
 import { MatchService } from "../../services/match.service";
 
 @Component({
