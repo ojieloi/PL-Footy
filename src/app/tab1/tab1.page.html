@@ -4,16 +4,21 @@
       Footy
     </ion-title>
   </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar placeholder="Search news" mode="md" (ionChange)="searchArticle()" [(ngModel)]="searchTerm"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="false">
 
   <ion-list lines="none">
 
+    <!-- Top News Section -->
+    <!-- Top News Section -->
     <p class="header ion-margin-start">Top News 🔥</p>
 
     <!-- Top news card -->
-    <ion-card *ngFor="let item of articles | slice:0:1" (click)="openArticle(item)">
+    <ion-card *ngFor="let item of articles | slice:0:3" (click)="openArticle(item)">
       <img src="{{item.urlToImage}}" />
       <ion-card-header>
         <ion-card-subtitle>{{item.source.name}}</ion-card-subtitle>
@@ -22,7 +27,7 @@
     </ion-card>
 
     <!-- Main news articles -->
-    <ion-item class="ion-no-padding" *ngFor="let item of articles | slice:1:20" (click)="openArticle(item)">
+    <ion-item class="ion-no-padding" *ngFor="let item of articles | slice:3:25" (click)="openArticle(item)">
       <ion-thumbnail slot="end">
         <img src="{{item.urlToImage}}">
       </ion-thumbnail>
@@ -31,10 +36,25 @@
         <p class="source">{{item.source.name}}</p>
       </ion-label>
     </ion-item>
-  </ion-list>
+    <!-- Top News Section -->
+    <!-- Top News Section -->
 
-  <!-- <ion-list *ngFor="let item of articles | slice:1:30" lines="none">
-    <ion-item class="ion-no-padding" *ngFor="let item of articles | slice:1:30" (click)="openArticle(item)">
+
+    <!-- Transfer News Section -->
+    <!-- Transfer News Section -->
+    <p class="header ion-margin-start">Latest Transfer News 💰</p>
+
+    <!-- Top news card -->
+    <ion-card *ngFor="let item of transfers | slice:0:3" (click)="openArticle(item)">
+      <img src="{{item.urlToImage}}" />
+      <ion-card-header>
+        <ion-card-subtitle>{{item.source.name}}</ion-card-subtitle>
+        <ion-card-title>{{item.title}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+    <!-- Main news articles -->
+    <ion-item class="ion-no-padding" *ngFor="let item of transfers | slice:3:25" (click)="openArticle(item)">
       <ion-thumbnail slot="end">
         <img src="{{item.urlToImage}}">
       </ion-thumbnail>
@@ -43,6 +63,10 @@
         <p class="source">{{item.source.name}}</p>
       </ion-label>
     </ion-item>
-  </ion-list> -->
+    <!-- Transfer News Section -->
+    <!-- Transfer News Section -->
+
+
+  </ion-list>
 
 </ion-content>

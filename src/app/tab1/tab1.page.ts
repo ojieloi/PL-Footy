@@ -9,14 +9,23 @@ import { NewsService } from "../services/news.service"
 })
 export class Tab1Page {
 
+  searchTerm: string;
   articles = [];
+  transfers = [];
 
   constructor(private router: Router, private newsService: NewsService) {}
 
   ngOnInit() {
+    // Getting all PL articles
     this.newsService.getArticles().subscribe(res => {
       this.articles = res.articles;
-      console.log("Articles: ", this.articles);
+      console.log("All Articles: ", this.articles);
+    })
+
+    // Getting PL transfer articles
+    this.newsService.getTransferNews().subscribe(res => {
+      this.transfers = res.articles;
+      console.log("Transfer Articles: ", this.articles);
     })
   }
 
@@ -24,6 +33,13 @@ export class Tab1Page {
     this.router.navigate(['article']);
     this.newsService.addArticle(item);
     console.log(item);
+  }
+
+  searchArticle(ev: any) {
+    this.newsService.getTeamArticles(this.searchTerm).subscribe(res => {
+      this.articles = res.articles;
+      console.log(this.articles);
+    })
   }
 
 }

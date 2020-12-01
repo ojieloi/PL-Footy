@@ -48,8 +48,18 @@ ion-segment-button ion-label {
   text-align: center;
 }
 
+.about {
+  padding: 16px;
+}
+
 ion-list {
   padding: 0px 16px 16px;
+}
+
+ion-textarea {
+  font-weight: 500;
+  margin-top: 24px;
+  line-height: 24px;
 }
 
 // Ion card
@@ -72,10 +82,11 @@ ion-card-header {
 
 // Article source
 ion-card-subtitle {
-  color: #c4c4c4;
+  color: #a0a0a0;
   font-size: 10px;
   font-weight: 600;
   margin: 4px 0px;
+  text-transform: none;
 }
 
 // Article title
@@ -88,12 +99,12 @@ ion-card-title {
 
 // Matches
 p.header {
-  color: rgb(240, 140, 2);
+  color: #a0a0a0;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   text-align: left;
-  margin: 32px 0px 8px;
-  text-transform: uppercase;
+  margin: 0px 0px 8px;
+  text-transform: none;
 }
 
 ion-item {
@@ -104,8 +115,7 @@ ion-item {
   --padding-bottom: 8px;
   border: 3px solid #f0f2f4;
   border-radius: 7px;
-  cursor: pointer;
-  margin-top: 8px;
+  margin-top: 16px;
 }
 
 // Team name
@@ -135,7 +145,7 @@ ion-datetime {
   color: #0051ff;
   font-size: 12px;
   font-weight: 500;
-  text-align: left;
+  text-align: right;
 }
 
 ion-datetime {

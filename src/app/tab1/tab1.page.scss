@@ -5,7 +5,8 @@
 
 // Header
 ion-header {
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.02);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
+  margin-bottom: 3px solid #f0f2f4;
 }
 
 // Header title
@@ -15,15 +16,31 @@ ion-title {
   font-weight: bold;
 }
 
+// Searchbar
+ion-searchbar {
+  --background: #f0f2f4;
+  --box-shadow: none;
+  --padding-start: 10px;
+  --padding-end: 0px;
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+  --border-radius: 7px;
+  margin-bottom: 8px;
+}
+
 ion-list {
   background-color: white;
-  padding: 16px;
+  padding: 0px 16px 16px;
 }
 
 p.header {
   font-size: 14px;
   font-weight: 600;
-  margin-bottom: 16px;
+  margin: 32px auto 16px;
+}
+
+p.header:nth-of-type(2) {
+  margin: 32px auto 0px;
 }
 
 // Top news
@@ -32,6 +49,7 @@ ion-card {
   border-radius: 7px;
   box-shadow: none;
   cursor: pointer;
+  margin-bottom: 16px;
 }
 
 ion-card img {
@@ -51,10 +69,11 @@ ion-card-header {
 
 ion-card-subtitle,
 p.source {
-  color: #c4c4c4;
-  font-size: 12px;
-  font-weight: 500;
-  margin: 4px 0px 0px;
+  color: rgb(178, 178, 178);
+  font-size: 11px;
+  font-weight: 600;
+  margin: 0px;
+  text-transform: none;
 }
 
 ion-card-title,
@@ -75,7 +94,7 @@ ion-item {
   border: 3px solid #f0f2f4;
   border-radius: 7px;
   cursor: pointer;
-  margin-top: 8px;
+  margin-top: 16px;
 }
 
 ion-textarea {
