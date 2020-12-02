@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  // Header
+  ion-header {
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.02);
+  }
+  
+  // Header title
+  ion-title {
+    color: #0051ff;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  // Segment
+  ion-segment-button ion-label {
+    color: black;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: none;
+  }
+  
+  .container {
+    padding: 16px;
+  }
+  
+  // Spinner
+  .spinner {
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  // League header
+  .header {
+    margin: 0px auto;
+    text-align: center;
+  }
+  
+  // Badge
+  .header img {
+    height: 50px;
+    width: 50px;
+  }
+  
+  // Name
+  .header h2.name {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 4px 0px 16px;
+  }
+  
+  // Table
+  // Table header
+  p.cl {
+    color: rgb(240, 140, 2);
+    font-size: 12px;
+    font-weight: 600;
+    margin: 24px 0px 10px;
+    text-align: left;
+    text-transform: uppercase;
+  }
+  
+  p.cl:nth-of-type(1) {
+    color: rgb(50, 80, 230);
+    margin: 0px 0px 10px;
+  }
+  
+  p.cl:nth-of-type(3) {
+    color: rgb(242, 60, 81);
+  }
+  
+  // Position
+  p.position,
+  p.data {
+    color: #a1a1a1;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: left;
+  }
+  
+  // All Teams
+  ion-item {
+    --background: #white;
+    --padding-start: 16px;
+    --padding-end: 8px;
+    --padding-top: 8px;
+    --padding-bottom: 8px;
+    border: 3px solid #f0f2f4;
+    border-radius: 7px;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  
+  ion-item.team:nth-of-type(5) {
+    margin-bottom: 24px;
+  }
+  
+  p.name {
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: right;
+  }
