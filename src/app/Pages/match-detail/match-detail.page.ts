@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
-// import { threadId } from 'worker_threads';
 import { MatchService } from "../../services/match.service";
 
 @Component({
@@ -11,33 +9,40 @@ import { MatchService } from "../../services/match.service";
 export class MatchDetailPage implements OnInit {
 
   event = [];
-  goalDetail = [];
+  stats = [];
 
-  constructor(private router: Router, private matchService: MatchService) {
-    this.matchService.getEvent('441613').subscribe(res => {
-      this.event = res.events;
-      // this.getGoalDetail(this.event);
-      console.log(this.event);
-    })
-  }
+  constructor(private matchService: MatchService) {}
 
   segmentChanged(ev: any) {
     console.log('Segment changed');
   }
 
   ngOnInit() {
+    // Getting event
+    let item = this.matchService.getTeam();
+    let selected = {};
+    for (let obj of item) {
+      selected[obj] = { ...obj, count: 1 };
+    }
+    this.event = Object.keys(selected).map((key) => selected[key]);
+    console.log("Event:", this.event);
+
+    // Getting event stats
+    this.getStats(this.event);
   }
 
-  // async getGoalDetail(event) {
-  //   let teamName;
-  //   let func = await Object.values(event).map(res => {
-  //     teamName = res;
+  // Getting game stats
+  async getStats(id) {
+    let match;
+    let func = await Object.values(id).map(res => {
+      match = res;
 
-  //     this.matchService.getTeamArticles(teamName.strTeam).subscribe(res => {
-  //       this.articles = res.articles;
-  //       console.log("Articles: ", this.articles);
-  //     })
-  //   })
-  // }
+      this.matchService.getEvent(match.idEvent).subscribe(res => {
+        this.stats = res.eventstats;
+        console.log("Stats:", this.stats);
+        // console.log("Stats:", match.idEvent);
+      })
+    });
+  }
 
 }

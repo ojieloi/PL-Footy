@@ -5,19 +5,25 @@
 
 // Header
 ion-header {
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.02);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 // Header title
 ion-title {
-  color: #0051ff;
-  font-size: 20px;
+  color: #212121;
+  font-size: 18px;
   font-weight: bold;
+  margin-top: 20px;
 }
 
 // Segment
+ion-segment {
+  margin: 0px auto;
+  width: 343px;
+}
+
 ion-segment-button ion-label {
-  color: black;
+  color: #212121;
   font-size: 12px;
   font-weight: 600;
   text-transform: none;
@@ -49,7 +55,7 @@ ion-segment-button ion-label {
 .header h2.name {
   font-size: 14px;
   font-weight: 500;
-  margin: 4px 0px 16px;
+  margin: 16px 0px 24px;
 }
 
 // Table
@@ -75,7 +81,7 @@ p.cl:nth-of-type(3) {
 // Position
 p.position,
 p.data {
-  color: #a1a1a1;
+  color: #a4a4a4;
   font-size: 12px;
   font-weight: 600;
   text-align: left;
@@ -83,15 +89,15 @@ p.data {
 
 // All Teams
 ion-item {
-  --background: #white;
+  --background: white;
   --padding-start: 16px;
   --padding-end: 8px;
   --padding-top: 8px;
   --padding-bottom: 8px;
-  border: 3px solid #f0f2f4;
   border-radius: 7px;
+  border: 3px solid #efefef;
+  margin-top: 12px;
   cursor: pointer;
-  margin-top: 8px;
 }
 
 ion-item.team:nth-of-type(5) {
@@ -99,7 +105,7 @@ ion-item.team:nth-of-type(5) {
 }
 
 p.name {
-  color: black;
+  color: #212121;
   font-size: 14px;
   font-weight: 500;
   text-align: right;

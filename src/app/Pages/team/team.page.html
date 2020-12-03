@@ -3,6 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
+    <ion-title>
+      Teams
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +17,7 @@
 
     <!-- Segment - News / Matches -->
     <!-- Segment - News / Matches -->
-    <ion-segment mode="md" color="primary" (ionChange)="segmentChanged($event)" value="news" [(ngModel)]="option">
+    <ion-segment mode="md" color="medium" (ionChange)="segmentChanged($event)" value="news" [(ngModel)]="option">
       <ion-segment-button value="1">
         <ion-label>About</ion-label>
       </ion-segment-button>
@@ -31,14 +34,6 @@
 
   <!-- Team News and Games -->
   <div class="container" [ngSwitch]="option">
-
-    <!-- Crescent Spinner -->
-    <!-- Crescent Spinner -->
-    <div class="spinner">
-      <ion-spinner name="crescent" duration="1000" *ngIf="show"></ion-spinner>
-    </div>
-    <!-- Crescent Spinner -->
-    <!-- Crescent Spinner -->
 
 
     <!-- About -->
@@ -85,7 +80,7 @@
         <!-- Previous -->
         <!-- Previous -->
         <p class="header">Previous Games</p>
-        <ion-item class="team ion-no-padding" *ngFor="let item of last">
+        <ion-item class="team ion-no-padding" *ngFor="let item of last" (click)="seeStats(item)">
           <!-- Team -->
           <ion-label slot="start">
             <h2 id="name">{{item.strHomeTeam}}</h2>
@@ -112,7 +107,7 @@
         <!-- Upcoming -->
         <div class="upcoming" style="margin-top: 32px;">
           <p class="header">Upcoming Games</p>
-          <ion-item class="team ion-no-padding" *ngFor="let item of next">
+          <ion-item class="team ion-no-padding" *ngFor="let item of next" (click)="seeStats(item)">
             <!-- Team -->
             <ion-label slot="start">
               <h2 id="name">{{item.strHomeTeam}}</h2>

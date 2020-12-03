@@ -5,14 +5,14 @@
 
 // Header
 ion-header {
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.02);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 // Header title
 ion-title {
-  color: #0051ff;
-  font-size: 20px;
-  font-weight: bold;
+  color: #212121;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 // Team badge and name
@@ -31,21 +31,20 @@ ion-title {
 .header h2.name {
   font-size: 14px;
   font-weight: 500;
-  margin: 4px 0px 16px;
+  margin: 16px 0px 24px;
 }
 
 // Segment
+ion-segment {
+  margin: 0px auto;
+  width: 343px;
+}
+
 ion-segment-button ion-label {
-  color: black;
+  color: #212121;
   font-size: 12px;
   font-weight: 600;
   text-transform: none;
-}
-
-// Spinner
-.spinner {
-  margin: 20px auto;
-  text-align: center;
 }
 
 .about {
@@ -99,50 +98,54 @@ ion-card-title {
 
 // Matches
 p.header {
-  color: #a0a0a0;
+  color: rgb(50, 80, 230);
   font-size: 12px;
   font-weight: 600;
-  text-align: left;
-  margin: 0px 0px 8px;
-  text-transform: none;
+  text-align: center;
+  margin-bottom: 24px;
+  text-transform: uppercase;
 }
 
 ion-item {
-  --background: #white;
+  --background: white;
   --padding-start: 16px;
   --padding-end: 8px;
-  --padding-top: 8px;
-  --padding-bottom: 8px;
-  border: 3px solid #f0f2f4;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
   border-radius: 7px;
-  margin-top: 16px;
+  border: 3px solid #efefef;
+  margin-top: 12px;
+  cursor: pointer;
 }
 
 // Team name
 h2#name {
-  color: black;
-  font-size: 13px;
+  color: #212121;
+  font-size: 14px;
   font-weight: 500;
   text-align: left;
 }
 
-h2#name:nth-last-of-type(1),
-p#score:nth-last-of-type(1) {
-  margin-top: 8px;
+h2#name:nth-of-type(1) {
+  margin-bottom: 8px;
 }
 
 // Match score
 p#score {
-  color: #c4c4c4;
-  font-size: 13px;
+  color: rgb(50, 80, 230);
+  font-size: 14px;
   font-weight: 600;
   text-align: center;
+}
+
+p#score:nth-of-type(1) {
+  margin-bottom: 10px;
 }
 
 // Match date
 p#status,
 ion-datetime {
-  color: #0051ff;
+  color: #c4c4c4;
   font-size: 12px;
   font-weight: 500;
   text-align: right;
@@ -151,4 +154,5 @@ ion-datetime {
 ion-datetime {
   color: #a200ff;
   font-size: 11px;
+  margin-top: 8px;
 }

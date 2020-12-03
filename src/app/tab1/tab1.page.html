@@ -5,7 +5,7 @@
     </ion-title>
   </ion-toolbar>
   <ion-toolbar>
-    <ion-searchbar placeholder="Search news" mode="md" (ionChange)="searchArticle()" [(ngModel)]="searchTerm"></ion-searchbar>
+    <ion-input placeholder="Search news" mode="md" (ionChange)="searchArticle()" [(ngModel)]="searchTerm"></ion-input>
   </ion-toolbar>
 </ion-header>
 
@@ -21,19 +21,19 @@
     <ion-card *ngFor="let item of articles | slice:0:3" (click)="openArticle(item)">
       <img src="{{item.urlToImage}}" />
       <ion-card-header>
-        <ion-card-subtitle>{{item.source.name}}</ion-card-subtitle>
+        <!-- <ion-card-subtitle>{{item.source.name}}</ion-card-subtitle> -->
         <ion-card-title>{{item.title}}</ion-card-title>
       </ion-card-header>
     </ion-card>
 
     <!-- Main news articles -->
     <ion-item class="ion-no-padding" *ngFor="let item of articles | slice:3:25" (click)="openArticle(item)">
-      <ion-thumbnail slot="end">
+      <ion-thumbnail style="height: 100px;">
         <img src="{{item.urlToImage}}">
       </ion-thumbnail>
       <ion-label>
-        <ion-textarea>{{ (item.title.length > 1)? (item.title | slice:0:50)+'...':(item.title) }}</ion-textarea>
-        <p class="source">{{item.source.name}}</p>
+        <ion-textarea>{{item.title}}</ion-textarea>
+        <!-- <p class="source">{{item.source.name}}</p> -->
       </ion-label>
     </ion-item>
     <!-- Top News Section -->
@@ -48,19 +48,19 @@
     <ion-card *ngFor="let item of transfers | slice:0:3" (click)="openArticle(item)">
       <img src="{{item.urlToImage}}" />
       <ion-card-header>
-        <ion-card-subtitle>{{item.source.name}}</ion-card-subtitle>
+        <!-- <ion-card-subtitle>{{item.source.name}}</ion-card-subtitle> -->
         <ion-card-title>{{item.title}}</ion-card-title>
       </ion-card-header>
     </ion-card>
 
     <!-- Main news articles -->
     <ion-item class="ion-no-padding" *ngFor="let item of transfers | slice:3:25" (click)="openArticle(item)">
-      <ion-thumbnail slot="end">
+      <ion-thumbnail>
         <img src="{{item.urlToImage}}">
       </ion-thumbnail>
       <ion-label>
-        <ion-textarea>{{ (item.title.length > 1)? (item.title | slice:0:50)+'...':(item.title) }}</ion-textarea>
-        <p class="source">{{item.source.name}}</p>
+        <ion-textarea>{{item.title}}</ion-textarea>
+        <!-- <p class="source">{{item.source.name}}</p> -->
       </ion-label>
     </ion-item>
     <!-- Transfer News Section -->

@@ -3,86 +3,65 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
+    <ion-title>
+      Game Summary
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
   <div class="container">
-
-    <!-- Score Header -->
-    <!-- Score Header -->
-    <div class="score" *ngFor="let item of event">
-      <p class="header">Score</p>
-        <ion-item class="team-score ion-no-padding" lines="none">
-          <!-- Team -->
-          <ion-label slot="start">
-            <h2 id="name">{{item.strHomeTeam}}</h2>
-            <h2 id="name">{{item.strAwayTeam}}</h2>
-          </ion-label>
-  
-          <!-- Score -->
-          <ion-note slot="end">
-            <p id="score">{{item.intHomeScore}}</p>
-            <p id="score">{{item.intAwayScore}}</p>
-          </ion-note>
-        </ion-item>
-
-
-        <p class="header">Total Shots</p>
-        <ion-item class="team-score ion-no-padding" lines="none">
-          <!-- Team -->
-          <ion-label slot="start">
-            <h2 id="name">{{item.strHomeTeam}}</h2>
-            <h2 id="name">{{item.strAwayTeam}}</h2>
-          </ion-label>
-  
-          <!-- Score -->
-          <ion-note slot="end">
-            <p id="score">{{item.intHomeShots}}</p>
-            <p id="score">{{item.intAwayShots}}</p>
-          </ion-note>
-        </ion-item>
-    </div>
-    <!-- Score Header -->
-    <!-- Score Header -->
-
-
-    <!-- Segment - News / Matches -->
-    <!-- Segment - News / Matches -->
-    <ion-segment mode="md" color="primary" (ionChange)="segmentChanged($event)" value="news" [(ngModel)]="option">
-      <ion-segment-button value="1">
-        <ion-label>Goals</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="2">
-        <ion-label>Lineups</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-    <!-- Segment - News / Matches -->
-    <!-- Segment - News / Matches -->
-
-
-    <div [ngSwitch]="option">
-
-      <!-- Goal Details -->
-      <!-- Goal Details -->
-      <ion-list *ngSwitchCase="'1'" lines="none">
-        <p class="header">Previous Games</p>
-          <ion-item class="team ion-no-padding" *ngFor="let goal of event">
-            <!-- Player -->
-            <ion-label>
-              <ion-textarea class="name">{{ goal.strHomeGoalDetails.split(";", goal.strHomeGoalDetails.length) }}</ion-textarea>
-            </ion-label>
     
-            <!-- Minute -->
-            <ion-note slot="end">
-              <p id="status">{{goal.strStatus}}</p>
-            </ion-note>
-          </ion-item>
-      </ion-list>
-      <!-- Goal Details -->
-      <!-- Goal Details -->
+    <div class="top" *ngFor="let item of event">
+      <p class="stat_name" style="color: rgb(74, 103, 247); text-align: left;">Score</p>
+      <ion-item lines="none">
 
+        <!-- Home Team -->
+        <ion-label>
+          <h2 id="left" style="color: white;">{{item.strHomeTeam}}</h2>
+        </ion-label>
+
+        <!-- Score - Home : Away -->
+        <ion-label>
+          <h2 id="center" style="color: rgb(74, 103, 247); font-size: 32px; text-align: center;">{{item.intHomeScore}} : {{item.intAwayScore}}</h2>
+        </ion-label>
+
+        <!-- Away Team -->
+        <ion-label>
+          <h2 id="right" style="color: white;">{{item.strAwayTeam}}</h2>
+        </ion-label>
+      </ion-item>
+      <p class="status">{{item.strStatus}}</p>
+      <p class="status">@ {{item.strVenue}}</p>
+      <ion-datetime id="dynamicDisabled" displayFormat="DDD, MMM DD" readonly="true" value="{{item.dateEvent}}"></ion-datetime>
+    </div>
+    
+
+    
+    <!-- Match Stats -->
+    <!-- Match Stats -->
+    <div style="padding: 0px 16px 16px;">
+      <ion-list lines="none" *ngFor="let item of stats">
+
+        <p class="stat_name">{{item.strStat}}</p>
+        <div class="matches">
+          <ion-item class="stats">
+            <!-- Team -->
+            <ion-label slot="start">
+              <h2 id="left">{{item.intHome}}</h2>
+            </ion-label>
+  
+            <ion-label>
+              <h2 id="center">|</h2>
+            </ion-label>
+  
+            <ion-label slot="end">
+              <h2 id="right">{{item.intAway}}</h2>
+            </ion-label>
+          </ion-item>
+        </div>
+      </ion-list>
     </div>
 
   </div>

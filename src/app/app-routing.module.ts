@@ -15,7 +15,7 @@ const routes: Routes = [
     loadChildren: () => import('./Pages/article/article.module').then( m => m.ArticlePageModule)
   },
   {
-    path: 'match-detail',
+    path: 'match-detail/:id',
     loadChildren: () => import('./Pages/match-detail/match-detail.module').then( m => m.MatchDetailPageModule)
   }
 ];

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { TeamsService } from "../../services/teams.service";
 import { NewsService } from "../../services/news.service";
+import { MatchService } from "../../services/match.service";
 
 @Component({
   selector: 'app-team',
@@ -19,27 +20,7 @@ export class TeamPage implements OnInit {
 
   option = 2;
 
-  constructor(private router: Router, private teamService: TeamsService, private newsService: NewsService) {
-    // this.teamService.getAllTeams().subscribe(res => {
-    //   this.team = res.teams;
-    //   console.log("Teams: ", this.team);
-    // })
-
-    // this.newsService.getTeamArticles('Arsenal').subscribe(res => {
-    //   this.articles = res.articles;
-    //   console.log("Articles: ", this.articles);
-    // })
-
-    // this.teamService.getPreviousGames('133604').subscribe(res => {
-    //   this.last = res.results;
-    //   console.log("Previous: ", this.last);
-    // })
-
-    // this.teamService.getUpcomingGames('133604').subscribe(res => {
-    //   this.next = res.events;
-    //   console.log("Previous: ", this.next);
-    // })
-  }
+  constructor(private router: Router, private teamService: TeamsService, private newsService: NewsService, private matchService: MatchService) {}
 
   segmentChanged(ev: any) {
     console.log('Segment changed');
@@ -116,6 +97,12 @@ export class TeamPage implements OnInit {
     this.router.navigate(['article']);
     this.newsService.addArticle(item);
     console.log(item);
+  }
+
+  // Open Match Details
+  seeStats(team) {
+    this.matchService.addTeam(team);
+    this.router.navigate(['match-detail/' + team.strEvent]);
   }
 
 }

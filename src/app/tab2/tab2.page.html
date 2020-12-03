@@ -1,17 +1,115 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar mode="md">
+    <ion-title style="margin-left: 16px;">
+      Footy
     </ion-title>
   </ion-toolbar>
+
+  <!-- Segment - Previous / Upcoming -->
+  <!-- Segment - Previous / Upcoming -->
+  <ion-segment mode="md" color="medium" (ionChange)="segmentChanged($event)" [(ngModel)]="option">
+    <ion-segment-button value="1">
+      <ion-label>Previous</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="2">
+      <ion-label>Upcoming</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <!-- Segment - Previous / Upcoming -->
+  <!-- Segment - Previous / Upcoming -->
+
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="false">
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <!-- Table and All Teams Container-->
+  <div class="container" [ngSwitch]="option">
+
+    <!-- Crescent Spinner -->
+    <!-- Crescent Spinner -->
+    <div class="spinner">
+      <ion-spinner name="crescent" duration="1000" *ngIf="show"></ion-spinner>
+    </div>
+    <!-- Crescent Spinner -->
+    <!-- Crescent Spinner -->
+
+
+    <!-- Previous Games -->
+    <!-- Previous Games -->
+    <div *ngIf="!show">
+      <ion-list *ngSwitchCase="'1'" lines="none">
+
+        <!-- Previous -->
+        <!-- Previous -->
+        <p class="header" *ngFor="let item of last | slice:0:1">Games - Round {{item.intRound}}</p>
+        <ion-item class="team ion-no-padding" *ngFor="let item of last | slice:0:10" (click)="seeStats(item)">
+          <!-- Team -->
+          <ion-label slot="start">
+            <h2 id="name">{{item.strHomeTeam}}</h2>
+            <h2 id="name">{{item.strAwayTeam}}</h2>
+          </ion-label>
+  
+          <!-- Score -->
+          <ion-note>
+            <p id="score">{{item.intHomeScore}}</p>
+            <p id="score">{{item.intAwayScore}}</p>
+          </ion-note>
+  
+          <!-- Date -->
+          <ion-note slot="end">
+            <p id="status">{{item.strStatus}}</p>
+            <ion-datetime id="dynamicDisabled" displayFormat="DDD, MMM DD" readonly="true" value="{{item.dateEvent}}"></ion-datetime>
+          </ion-note>
+        </ion-item>
+        <!-- Previous -->
+        <!-- Previous -->
+
+
+       </ion-list>
+    </div>
+    <!-- Previous Games -->
+    <!-- Previous Games -->
+
+
+    <!-- Upcoming Games -->
+    <!-- Upcoming Games -->
+    <div *ngIf="!show">
+      <ion-list *ngSwitchCase="'2'" lines="none">
+  
+  
+        <!-- Upcoming -->
+        <!-- Upcoming -->
+        <div class="upcoming">
+          <p class="header" *ngFor="let item of next | slice:0:1">Games - Round {{item.intRound}}</p>
+          <ion-item class="team ion-no-padding" *ngFor="let item of next | slice:0:10" (click)="seeStats(item)">
+            <!-- Team -->
+            <ion-label slot="start">
+              <h2 id="name">{{item.strHomeTeam}}</h2>
+              <h2 id="name">{{item.strAwayTeam}}</h2>
+            </ion-label>
+    
+            <!-- Score -->
+            <ion-note>
+              <p id="score">{{item.intHomeScore}}</p>
+              <p id="score">{{item.intHomeScore}}</p>
+            </ion-note>
+    
+            <!-- Date -->
+            <ion-note slot="end">
+              <p id="status">{{item.strStatus}}</p>
+              <ion-datetime id="dynamicDisabled" displayFormat="DDD, MMM DD" readonly="true" value="{{item.dateEvent}}"></ion-datetime>
+            </ion-note>
+          </ion-item>
+        </div>
+        <!-- Upcoming -->
+        <!-- Upcoming -->
+
+
+       </ion-list>
+    </div>
+    <!-- Upcoming Games -->
+    <!-- Upcoming Games -->
+    
+
+  </div>
 </ion-content>
